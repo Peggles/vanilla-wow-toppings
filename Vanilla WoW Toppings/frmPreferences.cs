@@ -29,7 +29,12 @@ namespace Vanilla_WoW_Toppings
         }
         public string CurrentRealmlist
         {
-            get { return cbRealmlists.Text.Trim(); }
+            get
+            {
+                return cbRealmlists.Text.Trim().Length > 0 ?
+                    cbRealmlists.Text.Trim() :
+                    Settings.CurrentRealmlist;
+            }
         }
         #endregion
 
@@ -65,7 +70,7 @@ namespace Vanilla_WoW_Toppings
         {
             var folderBrowser = new FolderBrowserDialog();
 
-            folderBrowser.Description = "Choose your installed WoW game directory.";
+            folderBrowser.Description = "Select the WoW client directory.";
             folderBrowser.SelectedPath = txtGameDataPath.Text;
 
             if (folderBrowser.ShowDialog() == DialogResult.OK)
@@ -78,7 +83,7 @@ namespace Vanilla_WoW_Toppings
         {
             var folderBrowser = new FolderBrowserDialog();
 
-            folderBrowser.Description = "Choose your AddOn library directory.";
+            folderBrowser.Description = "Select your AddOn library directory.";
             folderBrowser.SelectedPath = txtAddonLibraryPath.Text;
 
             if (folderBrowser.ShowDialog() == DialogResult.OK)
@@ -91,7 +96,7 @@ namespace Vanilla_WoW_Toppings
         {
             var folderBrowser = new FolderBrowserDialog();
 
-            folderBrowser.Description = "Choose a backup directory.";
+            folderBrowser.Description = "Select the directory to store backups in.";
             folderBrowser.SelectedPath = txtBackupStoragePath.Text;
 
             if (folderBrowser.ShowDialog() == DialogResult.OK)
@@ -102,7 +107,8 @@ namespace Vanilla_WoW_Toppings
 
         private void btnAddRealm_Click(object sender, EventArgs e)
         {
-            if (cbRealmlists.Text.Length > 0 && !realmlists.Contains(cbRealmlists.Text))
+            if (cbRealmlists.Text.Length > 0 &&
+                !realmlists.Contains(cbRealmlists.Text))
             {
                 realmlists.Add(cbRealmlists.Text);
                 cbRealmlists.Items.Add(cbRealmlists.Text);

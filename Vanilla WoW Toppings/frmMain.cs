@@ -27,41 +27,44 @@ namespace Vanilla_WoW_Toppings
             // Clear the addons in the combobox.
             comboBox.Items.Clear();
 
-            // Get the addon directory info from the directory path.
-            var addonCollectionDirectory = new DirectoryInfo(
-                addonCollectionDirectoryPath);
-
-            if (addonCollectionDirectory.Exists)
+            if (Directory.Exists(Settings.GameDataPath))
             {
-                try
+                // Get the addon directory info from the directory path.
+                var addonCollectionDirectory = new DirectoryInfo(
+                    addonCollectionDirectoryPath);
+
+                if (addonCollectionDirectory.Exists)
                 {
-                    // Add all the appropriate addons to the combobox.
-                    foreach (var addon in addonCollectionDirectory.
-                        GetDirectories())
+                    try
                     {
-                        // Add only addons that do not begin with
-                        // the specified set of characters.
-                        if (!addon.Name.StartsWith(
-                            Settings.ExcludeAddonsThatBeginWith))
+                        // Add all the appropriate addons to the combobox.
+                        foreach (var addon in addonCollectionDirectory.
+                            GetDirectories())
                         {
-                            comboBox.Items.Add(addon.Name);
+                            // Add only addons that do not begin with
+                            // the specified set of characters.
+                            if (!addon.Name.StartsWith(
+                                Settings.ExcludeAddonsThatBeginWith))
+                            {
+                                comboBox.Items.Add(addon.Name);
+                            }
                         }
                     }
+                    catch (DirectoryNotFoundException exception)
+                    {
+                        MessageBox.Show(
+                            "An error occurred when loading the AddOns.\r\n\r\n" +
+                                "Error message:\r\n" + exception.Message,
+                            Settings.ApplicationTitle,
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
                 }
-                catch (DirectoryNotFoundException exception)
-                {
-                    MessageBox.Show(
-                        "An error occurred when loading the AddOns.\r\n\r\n" +
-                            "Error message:\r\n" + exception.Message,
-                        Settings.ApplicationTitle,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
 
-            // Set the groupbox text to the number of addons in the combobox.
-            comboBox.Parent.Text = groupBoxText + " (" +
-                comboBox.Items.Count + ")";
+                // Set the groupbox text to the number of addons in the combobox.
+                comboBox.Parent.Text = groupBoxText + " (" +
+                    comboBox.Items.Count + ")";
+            }
         }
 
         void LoadInstalledAddons()
@@ -184,7 +187,8 @@ namespace Vanilla_WoW_Toppings
                         currentTime = currentTime.Replace(":", string.Empty);
 
                         // Set the backup directory name.
-                        var backupDirectoryName = currentDate + "_" + currentTime;
+                        var backupDirectoryName = Settings.BackupPrefix +
+                            currentDate + "-" + currentTime;
 
                         // Set the WoW installed addons directory.
                         var wowInstalledAddonsDirectory = new DirectoryInfo(
@@ -205,7 +209,7 @@ namespace Vanilla_WoW_Toppings
                         // Create the backup directory.
                         newBackupDirectory.Create();
 
-                        // Set the new addons directory.
+                        // Set the new addon directory.
                         var newAddonDirectory = new DirectoryInfo(Path.Combine(
                             newBackupDirectory.FullName,
                             "AddOns"));
@@ -400,28 +404,31 @@ namespace Vanilla_WoW_Toppings
             }
         }
 
-        void UpdateRealmlist(string realm)
+        void UpdateRealmlist(string realmlist)
         {
-            try
+            if (realmlist.Length > 0)
             {
-                var realmlistFilePath = Path.Combine(
-                    Settings.GameDataPath,
-                    Settings.RealmlistFilename);
-                using (var writer = new StreamWriter(realmlistFilePath))
+                try
                 {
-                    writer.Write("set realmlist " + realm);
-                    writer.Close();
+                    var realmlistFilePath = Path.Combine(
+                        Settings.GameDataPath,
+                        Settings.RealmlistFilename);
+                    using (var writer = new StreamWriter(realmlistFilePath))
+                    {
+                        writer.Write("set realmlist " + realmlist);
+                        writer.Close();
+                    }
                 }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(
-                    "An error occured when updating the" +
-                        "realmlist.\r\n\r\n" +
-                        "Error message:\r\n" + exception.Message,
-                    Settings.ApplicationTitle,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                catch (Exception exception)
+                {
+                    MessageBox.Show(
+                        "An error occured when updating the" +
+                            "realmlist.\r\n\r\n" +
+                            "Error message:\r\n" + exception.Message,
+                        Settings.ApplicationTitle,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
         }
 

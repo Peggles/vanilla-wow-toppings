@@ -1,3 +1,0 @@
-WowFolder=C:\Users\M\Filer\Spel\World of Warcraft 1.12
-AddonLibraryFolder=C:\Users\M\Filer\Övrigt\WoW AddOns
-BackupFolder=

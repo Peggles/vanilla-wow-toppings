@@ -21,6 +21,7 @@ namespace Vanilla_WoW_Toppings
         public const string AddonFileExtension = ".toc";
         public const string ExcludeAddonsThatBeginWith = "Blizzard_";
         public const string RealmlistFilename = "realmlist.wtf";
+        public const string BackupPrefix = "wow_backup_";
 
         // Addon combobox item colors.
         public static readonly Color DefaultAddonItemColor = Color.Black;

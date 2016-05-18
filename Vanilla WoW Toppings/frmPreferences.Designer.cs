@@ -184,6 +184,7 @@
             this.cbRealmlists.Location = new System.Drawing.Point(9, 40);
             this.cbRealmlists.Name = "cbRealmlists";
             this.cbRealmlists.Size = new System.Drawing.Size(470, 21);
+            this.cbRealmlists.Sorted = true;
             this.cbRealmlists.TabIndex = 0;
             // 
             // btnAddRealm
@@ -216,7 +217,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 96);
+            this.label1.Location = new System.Drawing.Point(6, 97);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 13);
             this.label1.TabIndex = 3;
@@ -268,10 +269,10 @@
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label6.Location = new System.Drawing.Point(6, 22);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(461, 13);
+            this.label6.Size = new System.Drawing.Size(485, 13);
             this.label6.TabIndex = 6;
-            this.label6.Text = "Set the realm you want the client to connect to. You may store multiple realms fo" +
-    "r easy switching.";
+            this.label6.Text = "Set the realmlist you want the client to connect to. You may store multiple realm" +
+    "lists for easy switching.";
             // 
             // frmPreferences
             // 
