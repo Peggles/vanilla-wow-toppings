@@ -1,4 +1,4 @@
-# vanilla-wow-toppings
+# Vanilla WoW Toppings
 An AddOn Manager for Vanilla WoW
 
 Vanilla WoW Toppings is an application that gives the user an easy way of installing/uninstalling WoW addons. A collection of AddOns is required and can usually be downloaded from the forums of private servers.
