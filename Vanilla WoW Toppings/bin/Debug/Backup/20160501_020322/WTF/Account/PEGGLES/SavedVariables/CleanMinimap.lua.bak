@@ -1,0 +1,26 @@
+
+CleanMinimapConfig = {
+	["default"] = {
+		["zoom"] = false,
+		["iconsPosition"] = {
+			["MinimapZoomIn"] = 209,
+			["MiniMapMailFrame"] = 168,
+			["MiniMapBattlefieldFrame"] = 302,
+			["MiniMapMeetingStoneFrame"] = 189,
+			["MiniMapTrackingFrame"] = 37,
+			["MinimapZoomOut"] = 235,
+		},
+		["largeScale"] = 2,
+		["on"] = true,
+		["version"] = 2.7,
+		["alpha"] = 1,
+		["modifierKey"] = "SHIFT",
+		["title"] = false,
+		["nsew"] = false,
+		["clock"] = false,
+		["smallScale"] = 0.51,
+		["showButton"] = true,
+		["buttonPos"] = 90,
+	},
+	["perCharSettings"] = true,
+}

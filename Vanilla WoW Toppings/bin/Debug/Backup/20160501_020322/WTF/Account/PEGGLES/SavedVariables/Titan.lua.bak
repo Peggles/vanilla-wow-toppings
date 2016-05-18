@@ -1,0 +1,103 @@
+
+TitanSettings = {
+	["Players"] = {
+		["Amyndra@Nostalrius Begins PvP"] = {
+			["Panel"] = {
+				["CastingBar"] = "Titan Nil",
+				["ButtonAlign"] = 1,
+				["Scale"] = 0.75,
+				["ScreenAdjust"] = "Titan Nil",
+				["BothBars"] = "Titan Nil",
+				["DisableFont"] = "Titan Nil",
+				["AutoHide"] = "Titan Nil",
+				["VersionShown"] = 1,
+				["AuxScreenAdjust"] = "Titan Nil",
+				["AuxAutoHide"] = "Titan Nil",
+				["FontScale"] = 0.8999999761581421,
+				["Buttons"] = {
+					[1] = "Clock",
+					[2] = "UIScale",
+				},
+				["DoubleBar"] = 1,
+				["AuxButtonAlign"] = 1,
+				["Transparency"] = 0,
+				["Position"] = 1,
+				["Location"] = {
+					[1] = "Bar",
+					[2] = "Bar",
+					[3] = "AuxBar",
+					[4] = "AuxBar",
+					[5] = "AuxBar",
+					[6] = "AuxBar",
+					[7] = "AuxBar",
+					[8] = "AuxBar",
+					[9] = "AuxBar",
+					[10] = "AuxBar",
+					[11] = "AuxBar",
+					[12] = "AuxBar",
+					[13] = "AuxBar",
+					[14] = "AuxBar",
+				},
+				["AuxDoubleBar"] = 1,
+				["ToolTipsShown"] = 1,
+			},
+			["Plugins"] = {
+				["Durability"] = {
+					["ShowColoredText"] = 1,
+					["ShowIcon"] = 1,
+					["iteminfo"] = 0,
+					["hideguy"] = 0,
+					["ShowLabelText"] = 1,
+				},
+				["DamageMeters"] = {
+					["shownValues"] = {
+					},
+					["shownLeaders"] = {
+					},
+					["shownRanks"] = {
+					},
+					["ShowIcon"] = 1,
+					["ShowLabelText"] = 1,
+				},
+				["DamageMetersRight"] = {
+					["ShowIcon"] = 1,
+				},
+				["PetInfo"] = {
+					["ShowPetAttrb"] = 1,
+					["ShowBarText"] = 1,
+					["ShowPetName"] = 1,
+					["ShowColoredText"] = 1,
+					["ShowPetLevel"] = 1,
+					["ShowLabelText"] = 1,
+				},
+				["ItemBonuses"] = {
+					["ShowColoredText"] = "Titan Nil",
+					["ShowIcon"] = 1,
+					["displaybonuses"] = {
+					},
+					["shortdisplay"] = "Titan Nil",
+					["ShowLabelText"] = 1,
+				},
+				["Clock"] = {
+					["OffsetHour"] = 0,
+					["DisplayOnRightSide"] = 1,
+					["Format"] = "12H",
+				},
+				["Ammo"] = {
+					["ShowColoredText"] = 1,
+					["ShowIcon"] = 1,
+					["ShowLabelText"] = 1,
+				},
+				["MetaMap"] = {
+					["ShowIcon"] = 1,
+				},
+			},
+		},
+	},
+	["Version"] = "2.18.11000",
+}
+TITAN_HONORPLUS = nil
+TITAN_HONORPLUS_CHATINFO = nil
+ServerTimeOffsets = {
+	["Nostalrius Begins PvP"] = 0,
+}

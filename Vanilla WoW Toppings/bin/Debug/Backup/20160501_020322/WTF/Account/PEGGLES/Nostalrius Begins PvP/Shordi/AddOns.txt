@@ -1,0 +1,5 @@
+HOTDOTTracker: disabled
+CornerMinimap: enabled
+ag_UnitFrames: enabled
+ArchiTotem: disabled
+TotemTimer: disabled

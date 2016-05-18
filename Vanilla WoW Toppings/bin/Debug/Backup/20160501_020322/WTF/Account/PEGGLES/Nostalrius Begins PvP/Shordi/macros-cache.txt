@@ -1,0 +1,8 @@
+MACRO 16777217 "Sinister Strike" Spell_Shadow_RitualOfSacrifice
+/script if (not IsCurrentAction(24)) then AttackTarget() end;
+/cast Sinister Strike
+END
+MACRO 16777218 "Target Attack" Ability_Marksmanship
+/target Foreman
+/cast Sinister Strike
+END

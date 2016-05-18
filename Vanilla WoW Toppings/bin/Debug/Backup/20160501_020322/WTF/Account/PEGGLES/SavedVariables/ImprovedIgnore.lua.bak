@@ -1,0 +1,12 @@
+
+ImprovedIgnore_Settings = {
+	["whisper"] = "allow",
+}
+ImprovedIgnore_List = {
+}
+ImprovedIgnore_BypassChannel = {
+	["Party"] = "allow",
+	["Raid Leader"] = "allow",
+	["Raid"] = "allow",
+	["Officer"] = "allow",
+}

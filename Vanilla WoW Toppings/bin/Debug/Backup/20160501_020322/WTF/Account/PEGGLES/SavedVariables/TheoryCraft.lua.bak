@@ -1,0 +1,10 @@
+
+TheoryCraft_SetBonuses = {
+}
+TheoryCraft_MitigationMobs = {
+	["Kobold Tunneler"] = {
+		[1] = 113,
+	},
+}
+TheoryCraft_MitigationPlayers = {
+}

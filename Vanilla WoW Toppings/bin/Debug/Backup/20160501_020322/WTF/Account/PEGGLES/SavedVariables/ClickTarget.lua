@@ -1,0 +1,2 @@
+
+CTrg_invite = nil

@@ -1,0 +1,30 @@
+
+MoveAnything_CustomFrames = {
+}
+MoveAnything_CharacterSettings = {
+	["default"] = {
+		["MirrorTimer1"] = {
+			["originalLeft"] = 655.5185417980414,
+			["scale"] = 0.9999999999999999,
+			["originalBottom"] = 731.3333926478657,
+			["hidden"] = false,
+			["y"] = 801.6542949819291,
+			["x"] = 656.3086737382264,
+			["name"] = "MirrorTimer1",
+			["movable"] = true,
+			["originalScale"] = 1,
+		},
+		["UIErrorsFrame"] = {
+			["originalLeft"] = 502.5185567748468,
+			["scale"] = 0.6295265599283192,
+			["originalBottom"] = 671.3333655665189,
+			["hidden"] = true,
+			["y"] = 1256.245078529409,
+			["x"] = 1622.853973753388,
+			["name"] = "UIErrorsFrame",
+			["movable"] = true,
+			["originalScale"] = 1,
+		},
+	},
+}
+MoveAnything_UseCharacterSettings = false

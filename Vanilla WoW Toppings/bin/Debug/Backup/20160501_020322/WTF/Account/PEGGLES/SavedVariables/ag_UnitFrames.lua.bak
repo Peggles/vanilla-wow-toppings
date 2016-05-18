@@ -1,0 +1,13 @@
+
+aUFDB = {
+	["profiles"] = {
+		["Default"] = {
+			["Positions"] = {
+				["partyPlayer_aUFgroup"] = {
+					["y"] = -59.75559090320201,
+					["x"] = 46.97777671869707,
+				},
+			},
+		},
+	},
+}

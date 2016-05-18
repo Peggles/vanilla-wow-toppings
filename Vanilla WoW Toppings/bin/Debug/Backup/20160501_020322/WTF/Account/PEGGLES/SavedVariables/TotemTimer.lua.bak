@@ -1,0 +1,21 @@
+
+TotemVars = {
+	["ETS"] = "Strength of Earth Totem",
+	["FTS"] = "Fire Nova Totem",
+	["Enable"] = true,
+	["WT"] = "Fire Resistance Totem",
+	["Locked"] = true,
+	["SName"] = "Strength of Earth",
+	["AT"] = "Grace of Air Totem",
+	["WTS"] = "Fire Resistance Totem",
+	["Nova"] = false,
+	["Enabled"] = true,
+	["Frame"] = false,
+	["SElem"] = "Earth",
+	["LoudAlert"] = true,
+	["ATS"] = "Grace of Air Totem",
+	["ET"] = "Stoneskin Totem",
+	["FT"] = "Fire Nova Totem",
+	["Alert"] = true,
+	["Reset"] = true,
+}

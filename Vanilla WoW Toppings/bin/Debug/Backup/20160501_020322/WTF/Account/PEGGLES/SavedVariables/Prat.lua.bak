@@ -1,0 +1,43 @@
+
+PratDB = {
+	["namespaces"] = {
+		["PlayerNames"] = {
+			["profiles"] = {
+				["Default"] = {
+					["classes"] = {
+						["Alcerin"] = "ROGUE",
+						["Ulfast"] = "MAGE",
+						["Madnessqq"] = "Unknown",
+						["Unknown"] = "HUNTER",
+						["Turnred"] = "WARRIOR",
+					},
+					["levels"] = {
+						["Alcerin"] = 7,
+						["Amyndra"] = 12,
+						["Unknown"] = 12,
+						["Turnred"] = 8,
+						["Ulfast"] = 8,
+					},
+				},
+			},
+		},
+		["ChannelColorMemory"] = {
+			["profiles"] = {
+				["Default"] = {
+					["colors"] = {
+						["LocalDefense"] = {
+							["r"] = 1.000000059138984,
+							["g"] = 0.752941220998764,
+							["b"] = 0.752941220998764,
+						},
+						["General"] = {
+							["r"] = 1.000000059138984,
+							["g"] = 0.752941220998764,
+							["b"] = 0.752941220998764,
+						},
+					},
+				},
+			},
+		},
+	},
+}

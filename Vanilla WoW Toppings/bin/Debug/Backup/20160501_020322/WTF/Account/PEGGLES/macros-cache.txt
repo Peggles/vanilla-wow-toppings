@@ -1,0 +1,27 @@
+MACRO 7 "Attack" Ability_MeleeDamage
+/script if (not IsCurrentAction(24)) then AttackTarget();end;
+END
+MACRO 2 "Bank" Spell_Fire_SunKey
+/bgn bank
+END
+MACRO 1 "Chicken" Spell_Magic_PolymorphChicken
+/chicken
+END
+MACRO 4 "LFG" Ability_Warrior_Revenge
+/4 LFG X (dps)
+/5 LFG X (dps)
+/1 LFG X (dps)
+/2 LFG X (dps)
+END
+MACRO 5 "LFM" Ability_CheapShot
+/4 LF1M X -> Tank
+/5 LF1M X -> Tank
+/1 LF1M X -> Tank
+/2 LF1M X -> Tank
+END
+MACRO 6 "OoM" Spell_Shadow_ManaBurn
+/script if(UnitMana("Player")<0.25*UnitManaMax("Player"))then if(UnitAffectingCombat("Player"))then SendChatMessage("[Low Mana]","PARTY");DoEmote("oom");else SendChatMessage("[Mana Break]","PARTY");end;end;
+END
+MACRO 3 "Target" Ability_Hunter_SniperShot
+/target Anaya Dawnrunner
+END

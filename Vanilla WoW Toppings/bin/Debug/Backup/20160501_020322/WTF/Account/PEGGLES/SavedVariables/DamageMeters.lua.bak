@@ -1,0 +1,356 @@
+
+DamageMeters_tables = {
+	[1] = {
+		[1] = {
+			["class"] = "Hunter",
+			["player"] = "Amyndra",
+			["health"] = 283,
+			["dmiData"] = {
+				[1] = {
+					["lastQuantTime"] = 80182.156,
+					["critCount"] = 0,
+					["events"] = {
+						["spellTable"] = {
+							["[Pet]"] = {
+								["damageType"] = 8,
+								["value"] = 0,
+								["resistanceSum"] = 0,
+								["counts"] = {
+									[1] = 1,
+									[2] = 0,
+								},
+								["resistanceCount"] = 0,
+							},
+						},
+						["dirty"] = true,
+					},
+					["hitCount"] = 0,
+					["q"] = 0,
+				},
+				[2] = {
+					["lastQuantTime"] = 80182.156,
+					["critCount"] = 0,
+					["hitCount"] = 0,
+					["q"] = 0,
+				},
+				[3] = {
+					["lastQuantTime"] = 80182.156,
+					["critCount"] = 0,
+					["hitCount"] = 0,
+					["q"] = 0,
+				},
+				[4] = {
+					["lastQuantTime"] = 80182.156,
+					["critCount"] = 0,
+					["hitCount"] = 0,
+					["q"] = 0,
+				},
+				[5] = {
+					["lastQuantTime"] = 80182.156,
+					["critCount"] = 0,
+					["hitCount"] = 0,
+					["q"] = 0,
+				},
+				[6] = {
+					["lastQuantTime"] = 80182.156,
+					["critCount"] = 0,
+					["hitCount"] = 0,
+					["q"] = 0,
+				},
+				[7] = {
+					["lastQuantTime"] = 80182.156,
+					["critCount"] = 0,
+					["hitCount"] = 0,
+					["q"] = 0,
+				},
+			},
+			["lastTime"] = 80182.156,
+			["maxHealth"] = 283,
+			["relationship"] = 1,
+		},
+	},
+	[2] = {
+	},
+	[3] = {
+		[1] = {
+			["player"] = "Amyndra",
+			["relationship"] = 1,
+			["dmiData"] = {
+				[1] = {
+					["lastQuantTime"] = 80182.156,
+					["critCount"] = 0,
+					["events"] = {
+						["spellTable"] = {
+							["[Pet]"] = {
+								["damageType"] = 8,
+								["value"] = 0,
+								["resistanceSum"] = 0,
+								["counts"] = {
+									[1] = 1,
+									[2] = 0,
+								},
+								["resistanceCount"] = 0,
+							},
+						},
+						["dirty"] = true,
+					},
+					["hitCount"] = 0,
+					["q"] = 0,
+				},
+				[2] = {
+					["lastQuantTime"] = 80182.156,
+					["critCount"] = 0,
+					["hitCount"] = 0,
+					["q"] = 0,
+				},
+				[3] = {
+					["lastQuantTime"] = 80182.156,
+					["critCount"] = 0,
+					["hitCount"] = 0,
+					["q"] = 0,
+				},
+				[4] = {
+					["lastQuantTime"] = 80182.156,
+					["critCount"] = 0,
+					["hitCount"] = 0,
+					["q"] = 0,
+				},
+				[5] = {
+					["lastQuantTime"] = 80182.156,
+					["critCount"] = 0,
+					["hitCount"] = 0,
+					["q"] = 0,
+				},
+				[6] = {
+					["lastQuantTime"] = 80182.156,
+					["critCount"] = 0,
+					["hitCount"] = 0,
+					["q"] = 0,
+				},
+				[7] = {
+					["lastQuantTime"] = 80182.156,
+					["critCount"] = 0,
+					["hitCount"] = 0,
+					["q"] = 0,
+				},
+			},
+			["lastTime"] = 80182.156,
+			["class"] = "Hunter",
+		},
+	},
+}
+DamageMeters_barCount = 5
+DamageMeters_quantity = 1
+DamageMeters_sort = 1
+DamageMeters_textOptions = {
+	[1] = true,
+	[2] = true,
+	[3] = true,
+	[4] = false,
+	[5] = true,
+	[6] = false,
+}
+DamageMeters_colorScheme = 2
+DamageMeters_autoCountLimit = 0
+DamageMeters_syncChannel = nil
+DamageMeters_loadedDataVersion = 5110
+DamageMeters_pauseState = 0
+DamageMeters_quantityColor = {
+	[1] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[2] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[3] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[4] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[5] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[6] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[7] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[8] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[9] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[10] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[11] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[12] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[13] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[14] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[15] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[16] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[17] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[18] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[19] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+	[20] = {
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 0.4800000190734863,
+	},
+}
+DamageMeters_contributorList = {
+}
+DamageMeters_eventDataLevel = 2
+DamageMeters_textState = 0
+DamageMeters_debug4 = {
+	["msgWatchMode"] = false,
+	["showParse"] = false,
+	["showSyncQueueInfo"] = false,
+	["showValueChanges"] = false,
+	["showSyncChanges"] = false,
+	["syncSelf"] = false,
+	["showAll"] = false,
+	["showGCInfo"] = false,
+	["showHealthChanges"] = false,
+	["syncSelfTestMode"] = false,
+}
+DMT_ACTIVE = 1
+DMT_SAVED = 2
+DMT_VISIBLE = 1
+DamageMeters_quantitiesFilter = {
+	[1] = true,
+	[2] = true,
+	[3] = true,
+	[4] = true,
+	[8] = true,
+	[9] = false,
+	[10] = false,
+	[11] = false,
+	[15] = true,
+}
+DamageMeters_tableInfo = {
+	[1] = {
+		["sessionIndex"] = 1,
+		["sessionLabel"] = "Default",
+	},
+	[2] = {
+		["sessionIndex"] = 1,
+		["sessionLabel"] = "Default",
+	},
+	[3] = {
+		["sessionIndex"] = 1,
+		["sessionLabel"] = "Default",
+	},
+}
+DMTIMERMODE = 0
+DamageMeters_viewMode = 1
+DamageMeters_debugEnabled = false
+DamageMeters_flags = {
+	[1] = true,
+	[2] = false,
+	[3] = true,
+	[4] = false,
+	[5] = false,
+	[6] = true,
+	[7] = false,
+	[10] = true,
+	[11] = false,
+	[13] = true,
+	[14] = true,
+	[15] = true,
+	[16] = true,
+	[17] = false,
+	[18] = true,
+	[19] = false,
+	[20] = false,
+	[21] = false,
+	[22] = false,
+	[23] = false,
+	[24] = false,
+	[25] = true,
+	[26] = false,
+}
+DamageMeters_savedBarCount = 1
+DamageMeters_BARWIDTH = 208.2839701113942
+DamageMeters_pluginDMITable = {
+}
+DM_eventCaseTableDebug = nil

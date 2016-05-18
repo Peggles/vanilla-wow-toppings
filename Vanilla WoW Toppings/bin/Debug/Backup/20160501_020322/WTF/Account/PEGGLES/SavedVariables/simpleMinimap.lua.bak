@@ -1,0 +1,32 @@
+
+smmConf = {
+	["scale"] = 1,
+	["alpha"] = 1,
+	["framePos"] = {
+		["map"] = false,
+		["doll"] = false,
+		["quest"] = {
+			["y"] = 597.9999834597113,
+			["x"] = 641.999959915877,
+		},
+		["timer"] = false,
+	},
+	["version"] = "14",
+	["lock"] = false,
+	["skin"] = 1,
+	["buttonPos"] = {
+		["zoomin"] = 209,
+		["time"] = 137,
+		["track"] = 38,
+		["mail"] = 169,
+		["zoomout"] = 235,
+		["meet"] = 189,
+		["bgs"] = 302,
+	},
+	["showPings"] = true,
+	["hide"] = {
+		["time"] = false,
+		["location"] = false,
+		["zoom"] = false,
+	},
+}

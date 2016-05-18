@@ -1,0 +1,19 @@
+
+BCB_SAVED = {
+	["BearCastBarxOfs"] = 0,
+	["BearCastBarRelativeTo"] = UIParent,
+	["barColor"] = {
+		["a"] = 1,
+		["r"] = 0.75,
+		["g"] = 0.5,
+		["b"] = 0,
+	},
+	["BearCastBarRelativePoint"] = "CENTER",
+	["customCastBarTexture"] = "flat",
+	["lagProtection"] = 0.1,
+	["BearCastBarPoint"] = "CENTER",
+	["height"] = 32,
+	["BearCastBaryOfs"] = 0,
+	["debug"] = false,
+	["width"] = 255,
+}
