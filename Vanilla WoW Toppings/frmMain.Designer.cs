@@ -34,6 +34,10 @@
             this.miPerformBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.directoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miOpenGameDirectory = new System.Windows.Forms.ToolStripMenuItem();
+            this.miOpenAddonLibraryDirectory = new System.Windows.Forms.ToolStripMenuItem();
+            this.miOpenBackupDirectory = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miPreferences = new System.Windows.Forms.ToolStripMenuItem();
             this.miLaunchWow = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,10 +47,7 @@
             this.grbAddonLibrary = new System.Windows.Forms.GroupBox();
             this.btnInstallAddon = new System.Windows.Forms.Button();
             this.cbLibraryAddons = new System.Windows.Forms.ComboBox();
-            this.directoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miOpenGameDirectory = new System.Windows.Forms.ToolStripMenuItem();
-            this.miOpenAddonLibraryDirectory = new System.Windows.Forms.ToolStripMenuItem();
-            this.miOpenBackupDirectory = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRestoreBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.grbInstalledAddons.SuspendLayout();
             this.grbAddonLibrary.SuspendLayout();
@@ -69,6 +70,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miPerformBackup,
+            this.miRestoreBackup,
             this.toolStripSeparator1,
             this.miExit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -94,6 +96,37 @@
             this.miExit.Text = "Exit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
+            // directoriesToolStripMenuItem
+            // 
+            this.directoriesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miOpenGameDirectory,
+            this.miOpenAddonLibraryDirectory,
+            this.miOpenBackupDirectory});
+            this.directoriesToolStripMenuItem.Name = "directoriesToolStripMenuItem";
+            this.directoriesToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.directoriesToolStripMenuItem.Text = "Directories";
+            // 
+            // miOpenGameDirectory
+            // 
+            this.miOpenGameDirectory.Name = "miOpenGameDirectory";
+            this.miOpenGameDirectory.Size = new System.Drawing.Size(166, 22);
+            this.miOpenGameDirectory.Text = "Game data...";
+            this.miOpenGameDirectory.Click += new System.EventHandler(this.miOpenGameDirectory_Click);
+            // 
+            // miOpenAddonLibraryDirectory
+            // 
+            this.miOpenAddonLibraryDirectory.Name = "miOpenAddonLibraryDirectory";
+            this.miOpenAddonLibraryDirectory.Size = new System.Drawing.Size(166, 22);
+            this.miOpenAddonLibraryDirectory.Text = "AddOn library...";
+            this.miOpenAddonLibraryDirectory.Click += new System.EventHandler(this.miOpenAddonLibraryDirectory_Click);
+            // 
+            // miOpenBackupDirectory
+            // 
+            this.miOpenBackupDirectory.Name = "miOpenBackupDirectory";
+            this.miOpenBackupDirectory.Size = new System.Drawing.Size(166, 22);
+            this.miOpenBackupDirectory.Text = "Backup-storage...";
+            this.miOpenBackupDirectory.Click += new System.EventHandler(this.miOpenBackupDirectory_Click);
+            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -105,13 +138,12 @@
             // miPreferences
             // 
             this.miPreferences.Name = "miPreferences";
-            this.miPreferences.Size = new System.Drawing.Size(144, 22);
+            this.miPreferences.Size = new System.Drawing.Size(152, 22);
             this.miPreferences.Text = "Preferences...";
             this.miPreferences.Click += new System.EventHandler(this.miPreferences_Click);
             // 
             // miLaunchWow
             // 
-            this.miLaunchWow.Enabled = false;
             this.miLaunchWow.Name = "miLaunchWow";
             this.miLaunchWow.Size = new System.Drawing.Size(90, 20);
             this.miLaunchWow.Text = "Launch WoW";
@@ -189,36 +221,11 @@
             this.cbLibraryAddons.TabIndex = 0;
             this.cbLibraryAddons.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbLibraryAddons_DrawItem);
             // 
-            // directoriesToolStripMenuItem
+            // miRestoreBackup
             // 
-            this.directoriesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miOpenGameDirectory,
-            this.miOpenAddonLibraryDirectory,
-            this.miOpenBackupDirectory});
-            this.directoriesToolStripMenuItem.Name = "directoriesToolStripMenuItem";
-            this.directoriesToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.directoriesToolStripMenuItem.Text = "Directories";
-            // 
-            // miOpenGameDirectory
-            // 
-            this.miOpenGameDirectory.Name = "miOpenGameDirectory";
-            this.miOpenGameDirectory.Size = new System.Drawing.Size(207, 22);
-            this.miOpenGameDirectory.Text = "Game directory...";
-            this.miOpenGameDirectory.Click += new System.EventHandler(this.miOpenGameDirectory_Click);
-            // 
-            // miOpenAddonLibraryDirectory
-            // 
-            this.miOpenAddonLibraryDirectory.Name = "miOpenAddonLibraryDirectory";
-            this.miOpenAddonLibraryDirectory.Size = new System.Drawing.Size(207, 22);
-            this.miOpenAddonLibraryDirectory.Text = "AddOn library directory...";
-            this.miOpenAddonLibraryDirectory.Click += new System.EventHandler(this.miOpenAddonLibraryDirectory_Click);
-            // 
-            // miOpenBackupDirectory
-            // 
-            this.miOpenBackupDirectory.Name = "miOpenBackupDirectory";
-            this.miOpenBackupDirectory.Size = new System.Drawing.Size(207, 22);
-            this.miOpenBackupDirectory.Text = "Backup directory...";
-            this.miOpenBackupDirectory.Click += new System.EventHandler(this.miOpenBackupDirectory_Click);
+            this.miRestoreBackup.Name = "miRestoreBackup";
+            this.miRestoreBackup.Size = new System.Drawing.Size(159, 22);
+            this.miRestoreBackup.Text = "Restore backup";
             // 
             // frmMain
             // 
@@ -264,6 +271,7 @@
         private System.Windows.Forms.ToolStripMenuItem miOpenGameDirectory;
         private System.Windows.Forms.ToolStripMenuItem miOpenAddonLibraryDirectory;
         private System.Windows.Forms.ToolStripMenuItem miOpenBackupDirectory;
+        private System.Windows.Forms.ToolStripMenuItem miRestoreBackup;
     }
 }
 

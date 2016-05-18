@@ -17,12 +17,13 @@ namespace Vanilla_WoW_Toppings
         // WoW and addon file/directory settings.
         public const string WowFilename = "WoW.exe";
         public const string SettingsFilename = "Settings.txt";
-        public const string WowAddonDirectoryPath = "Interface/AddOns";
+        public const string GameDataAddonPath = "Interface/AddOns";
         public const string AddonFileExtension = ".toc";
-        public const string AddonsExcludedThatStartsWith = "Blizzard_";
+        public const string ExcludeAddonsThatBeginWith = "Blizzard_";
+        public const string RealmlistFilename = "realmlist.wtf";
 
         // Addon combobox item colors.
-        public static readonly Color NormalAddonItemColor = Color.Black;
+        public static readonly Color DefaultAddonItemColor = Color.Black;
         public static readonly Color SelectedAddonItemColor =
             Color.FromArgb(25, 130, 25);
         // Addon combobox item offset.
@@ -30,9 +31,11 @@ namespace Vanilla_WoW_Toppings
         public const int AddonItemNotesOffsetY = 16;
 
         // Directory path variables.
-        public static string WowGameDirectoryPath = string.Empty;
-        public static string AddonLibraryDirectoryPath = string.Empty;
-        public static string BackupDirectoryPath = string.Empty;
+        public static string GameDataPath = string.Empty;
+        public static string AddonLibraryPath = string.Empty;
+        public static string BackupStoragePath = string.Empty;
+
+        public static int MaxStoredBackups = 5;
 
         // Realmlists
         public static List<string> Realmlists = new List<string>();
@@ -54,18 +57,22 @@ namespace Vanilla_WoW_Toppings
                     
                     // Append the WoW game directory path.
                     filetext.Append(
-                        "WowDirectory=" + WowGameDirectoryPath);
+                        "GAME-DATA=" + GameDataPath);
 
                     // Append the addon library directory path.
                     filetext.Append(
-                        "\r\nAddonLibraryDirectory=" + AddonLibraryDirectoryPath);
+                        "\r\nADDON-LIBRARY=" + AddonLibraryPath);
 
                     // Append the backup directory path.
                     filetext.Append(
-                        "\r\nBackupDirectory=" + BackupDirectoryPath);
+                        "\r\nBACKUP-STORAGE=" + BackupStoragePath);
+
+                    // Append the max number of backups to store.
+                    filetext.Append(
+                        "\r\nMAX-STORED-BACKUPS=" + MaxStoredBackups);
 
                     // Append the realmlists.
-                    filetext.Append("\r\nRealmlists=");
+                    filetext.Append("\r\nREALMLISTS=");
                     for (var i = 0; i < Realmlists.Count; i++)
                     {
                         filetext.Append(Realmlists[i]);
@@ -75,7 +82,7 @@ namespace Vanilla_WoW_Toppings
                         }
                     }
                     filetext.Append(
-                        "\r\nCurrentRealmlist=" + CurrentRealmlist);
+                        "\r\nCURRENT-REALMLIST=" + CurrentRealmlist);
 
 
                     // Write to the file then close it.
@@ -111,16 +118,20 @@ namespace Vanilla_WoW_Toppings
                         var splitChar = '=';
 
                         // Load the WoW game directory path.
-                        WowGameDirectoryPath = reader.ReadLine().
+                        GameDataPath = reader.ReadLine().
                             Split(splitChar)[1];
 
                         // Load the addon library directory path.
-                        AddonLibraryDirectoryPath = reader.ReadLine().
+                        AddonLibraryPath = reader.ReadLine().
                             Split(splitChar)[1];
 
                         // Load the backup directory path.
-                        BackupDirectoryPath = reader.ReadLine().
+                        BackupStoragePath = reader.ReadLine().
                             Split(splitChar)[1];
+
+                        // Load max stored backups.
+                        MaxStoredBackups = Convert.ToInt32(reader.ReadLine().
+                            Split(splitChar)[1]);
 
                         // Load realmlists.
                         var realmlists = reader.ReadLine().

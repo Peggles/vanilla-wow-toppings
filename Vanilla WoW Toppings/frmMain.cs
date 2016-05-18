@@ -16,10 +16,7 @@ namespace Vanilla_WoW_Toppings
 
         void InitializeApplication()
         {
-            UpdateWowDirectoryAvailability();
-            UpdateAddonLibraryDirectoryAvailability();
-            UpdateBackupDirectoryAvailability();
-
+            UpdateControlAvailability();
             LoadInstalledAddons();
             LoadAddonLibrary();
         }
@@ -45,7 +42,7 @@ namespace Vanilla_WoW_Toppings
                         // Add only addons that do not begin with
                         // the specified set of characters.
                         if (!addon.Name.StartsWith(
-                            Settings.AddonsExcludedThatStartsWith))
+                            Settings.ExcludeAddonsThatBeginWith))
                         {
                             comboBox.Items.Add(addon.Name);
                         }
@@ -71,8 +68,8 @@ namespace Vanilla_WoW_Toppings
         {
             // Set the directory path for the installed addons.
             var installedAddonsDirectoryPath = Path.Combine(
-                Settings.WowGameDirectoryPath,
-                Settings.WowAddonDirectoryPath);
+                Settings.GameDataPath,
+                Settings.GameDataAddonPath);
 
             // Add all the installed addons to the combobox.
             LoadAddons(
@@ -85,7 +82,7 @@ namespace Vanilla_WoW_Toppings
         {
             // Set the directory path for the addon library.
             var addonLibraryDirectoryPath =
-                Settings.AddonLibraryDirectoryPath;
+                Settings.AddonLibraryPath;
 
             // Add all the addons in the addon library to the combobox.
             LoadAddons(
@@ -94,34 +91,31 @@ namespace Vanilla_WoW_Toppings
                 addonLibraryDirectoryPath);
         }
 
-        void UpdateWowDirectoryAvailability()
+        void UpdateControlAvailability()
         {
-            var isWowDirectoryAvailable = Directory.Exists(
-                Settings.WowGameDirectoryPath);
+            // Set the availability of the WoW game data directory.
+            var isGameDataDirectoryExisting = Directory.Exists(
+                Settings.GameDataPath);
+            miOpenGameDirectory.Enabled = isGameDataDirectoryExisting;
+            miLaunchWow.Enabled = isGameDataDirectoryExisting;
 
-            // Set the availability of the WoW directory functionality.
-            miOpenGameDirectory.Enabled = isWowDirectoryAvailable;
-            miLaunchWow.Enabled = isWowDirectoryAvailable;
-        }
+            // Set the availability of the addon library directory.
+            var isAddonLibraryDirectoryExisting = Directory.Exists(
+                Settings.AddonLibraryPath);
+            miOpenAddonLibraryDirectory.Enabled = isAddonLibraryDirectoryExisting;
 
-        void UpdateAddonLibraryDirectoryAvailability()
-        {
-            var isAddonLibraryDirectoryAvailable = Directory.Exists(
-                Settings.AddonLibraryDirectoryPath);
+            // Set the availability of the backup directory.
+            var isBackupStorageDirectoryExisting = Directory.Exists(
+                Settings.BackupStoragePath);
+            miPerformBackup.Enabled = isBackupStorageDirectoryExisting;
+            miRestoreBackup.Enabled = isBackupStorageDirectoryExisting;
+            miOpenBackupDirectory.Enabled = isBackupStorageDirectoryExisting;
 
-            // Set the availability of the addon
-            // library directory functionality.
-            miOpenAddonLibraryDirectory.Enabled = isAddonLibraryDirectoryAvailable;
-        }
+            // Set the availability of the installed addons.
+            grbInstalledAddons.Enabled = isGameDataDirectoryExisting;
 
-        void UpdateBackupDirectoryAvailability()
-        {
-            var isBackupDirectoryAvailable = Directory.Exists(
-                Settings.BackupDirectoryPath);
-
-            // Set the availability of the backup directory functionality.
-            miPerformBackup.Enabled = isBackupDirectoryAvailable;
-            miOpenBackupDirectory.Enabled = isBackupDirectoryAvailable;
+            // Set the availability of the addon library.
+            grbAddonLibrary.Enabled = isAddonLibraryDirectoryExisting;
         }
 
         string GetAddonNotes(string addonName, string addonDirectoryPath)
@@ -174,7 +168,7 @@ namespace Vanilla_WoW_Toppings
         {
             // Check if the backup directory exists.
             var isBackupDirectoryAvailable =
-                Directory.Exists(Settings.BackupDirectoryPath);
+                Directory.Exists(Settings.BackupStoragePath);
 
             if (isBackupDirectoryAvailable)
             {
@@ -195,17 +189,17 @@ namespace Vanilla_WoW_Toppings
                         // Set the WoW installed addons directory.
                         var wowInstalledAddonsDirectory = new DirectoryInfo(
                             Path.Combine(
-                                Settings.WowGameDirectoryPath,
-                                Settings.WowAddonDirectoryPath));
+                                Settings.GameDataPath,
+                                Settings.GameDataAddonPath));
 
                         // Set the WoW WTF (settings) directory.
                         var wowWtfDirectory = new DirectoryInfo(Path.Combine(
-                            Settings.WowGameDirectoryPath,
+                            Settings.GameDataPath,
                             "WTF"));
 
                         // Set the new backup directory.
                         var newBackupDirectory = new DirectoryInfo(Path.Combine(
-                            Settings.BackupDirectoryPath,
+                            Settings.BackupStoragePath,
                             backupDirectoryName));
 
                         // Create the backup directory.
@@ -342,24 +336,31 @@ namespace Vanilla_WoW_Toppings
 
                 // Check if this combobox is "cbLibraryAddons"
                 // and the addon is already installed.
-                bool isAddonInstalled = comboBox == cbLibraryAddons &&
-                    cbInstalledAddons.Items.Contains(
+                bool isInstalled = cbInstalledAddons.Items.Contains(
                         comboBox.Items[e.Index]);
+
+                // Get the addon name.
+                var addonName = comboBox.Items[e.Index].ToString();
+
+                // Set the item text.
+                var itemText = addonName;
+
                 // Set the brush (text color).
-                var brush = new SolidBrush(isAddonInstalled ?
-                    Settings.SelectedAddonItemColor :
-                    Settings.NormalAddonItemColor);
+                var brush = new SolidBrush(Settings.DefaultAddonItemColor);
+
+                if (comboBox == cbLibraryAddons && isInstalled)
+                {
+                    itemText = addonName + " [Installed]";
+                    brush.Color = Settings.SelectedAddonItemColor;
+                }
 
                 // Draw the addon title.
                 graphics.DrawString(
-                    comboBox.Items[e.Index].ToString(),
+                    itemText,
                     font,
                     brush,
                     e.Bounds.X,
                     e.Bounds.Y);
-
-                // Get the addon name.
-                var addonName = comboBox.Items[e.Index].ToString();
 
                 // Get the addon filepath depending on which combobox this is.
                 var addonFilepath = string.Empty;
@@ -367,9 +368,9 @@ namespace Vanilla_WoW_Toppings
                 {
                     // Get the filepath of the selected addon.
                     addonFilepath = Path.Combine(
-                        Settings.WowGameDirectoryPath,
+                        Settings.GameDataPath,
                         Path.Combine(
-                            Settings.WowAddonDirectoryPath,
+                            Settings.GameDataAddonPath,
                             Path.Combine(
                                 addonName,
                                 addonName + Settings.AddonFileExtension)));
@@ -378,7 +379,7 @@ namespace Vanilla_WoW_Toppings
                 {
                     // Set the addon library filepath.
                     addonFilepath = Path.Combine(
-                        Settings.AddonLibraryDirectoryPath,
+                        Settings.AddonLibraryPath,
                         Path.Combine(
                             addonName,
                             addonName + Settings.AddonFileExtension));
@@ -399,10 +400,37 @@ namespace Vanilla_WoW_Toppings
             }
         }
 
+        void UpdateRealmlist(string realm)
+        {
+            try
+            {
+                var realmlistFilePath = Path.Combine(
+                    Settings.GameDataPath,
+                    Settings.RealmlistFilename);
+                using (var writer = new StreamWriter(realmlistFilePath))
+                {
+                    writer.Write("set realmlist " + realm);
+                    writer.Close();
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(
+                    "An error occured when updating the" +
+                        "realmlist.\r\n\r\n" +
+                        "Error message:\r\n" + exception.Message,
+                    Settings.ApplicationTitle,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
             Settings.LoadSettings();
             InitializeApplication();
+
+            miRestoreBackup.Visible = false;
         }
 
         private void cbInstalledAddons_DrawItem(object sender, DrawItemEventArgs e)
@@ -425,9 +453,9 @@ namespace Vanilla_WoW_Toppings
                     // Set the directory path of the selected addon.
                     var selectedAddonDirectoryPath = new DirectoryInfo(
                         Path.Combine(
-                            Settings.WowGameDirectoryPath,
+                            Settings.GameDataPath,
                             Path.Combine(
-                                Settings.WowAddonDirectoryPath,
+                                Settings.GameDataAddonPath,
                                 cbInstalledAddons.SelectedItem.ToString())));
 
                     // Delete the addon directory.
@@ -459,16 +487,16 @@ namespace Vanilla_WoW_Toppings
             {
                 // Set the WoW game directory.
                 var wowGameDirectory = new DirectoryInfo(
-                    Settings.WowGameDirectoryPath);
+                    Settings.GameDataPath);
 
                 if (wowGameDirectory.Exists)
                 {
                     // Set the selected addon's target path.
                     var selectedAddonTargetDirectoryPath = new DirectoryInfo(
                         Path.Combine(
-                            Settings.WowGameDirectoryPath,
+                            Settings.GameDataPath,
                             Path.Combine(
-                                Settings.WowAddonDirectoryPath,
+                                Settings.GameDataAddonPath,
                                 cbLibraryAddons.SelectedItem.ToString())));
 
                     if (selectedAddonTargetDirectoryPath.Exists)
@@ -495,7 +523,7 @@ namespace Vanilla_WoW_Toppings
 
                     // Set the selected addon's source path.
                     var selectedAddonSourceDirectoryPath = Path.Combine(
-                        Settings.AddonLibraryDirectoryPath,
+                        Settings.AddonLibraryPath,
                         cbLibraryAddons.SelectedItem.ToString());
 
                     // Copy the source files and directories to
@@ -551,17 +579,20 @@ namespace Vanilla_WoW_Toppings
             if (preferenceForm.ShowDialog(this) == DialogResult.OK)
             {
                 // Set the WoW game directory path.
-                Settings.WowGameDirectoryPath =
+                Settings.GameDataPath =
                     preferenceForm.InstalledWowDirectory;
                 // Set the addon library directory path.
-                Settings.AddonLibraryDirectoryPath =
+                Settings.AddonLibraryPath =
                     preferenceForm.AddonLibraryDirectory;
                 // Set the backup directory path.
-                Settings.BackupDirectoryPath =
+                Settings.BackupStoragePath =
                     preferenceForm.BackupDirectory;
+                Settings.MaxStoredBackups = preferenceForm.MaxStoredBackups;
                 // Set the realmlists.
                 Settings.Realmlists = preferenceForm.Realmlists;
                 Settings.CurrentRealmlist = preferenceForm.CurrentRealmlist;
+
+                UpdateRealmlist(Settings.CurrentRealmlist);
 
                 // Save the settings.
                 Settings.SaveSettings();
@@ -577,7 +608,7 @@ namespace Vanilla_WoW_Toppings
             try
             {
                 Process.Start(Path.Combine(
-                    Settings.WowGameDirectoryPath,
+                    Settings.GameDataPath,
                     Settings.WowFilename));
 
                 Application.Exit();
@@ -597,17 +628,17 @@ namespace Vanilla_WoW_Toppings
 
         private void miOpenGameDirectory_Click(object sender, EventArgs e)
         {
-            OpenDirectory(Settings.WowGameDirectoryPath);
+            OpenDirectory(Settings.GameDataPath);
         }
 
         private void miOpenAddonLibraryDirectory_Click(object sender, EventArgs e)
         {
-            OpenDirectory(Settings.AddonLibraryDirectoryPath);
+            OpenDirectory(Settings.AddonLibraryPath);
         }
 
         private void miOpenBackupDirectory_Click(object sender, EventArgs e)
         {
-            OpenDirectory(Settings.BackupDirectoryPath);
+            OpenDirectory(Settings.BackupStoragePath);
         }
     }
 }

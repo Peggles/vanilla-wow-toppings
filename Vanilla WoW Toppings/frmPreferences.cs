@@ -9,15 +9,19 @@ namespace Vanilla_WoW_Toppings
         #region Properties
         public string InstalledWowDirectory
         {
-            get { return txtWowFolder.Text.Trim(); }
+            get { return txtGameDataPath.Text.Trim(); }
         }
         public string AddonLibraryDirectory
         {
-            get { return txtAddonsFolder.Text.Trim(); }
+            get { return txtAddonLibraryPath.Text.Trim(); }
         }
         public string BackupDirectory
         {
-            get { return txtBackupFolder.Text.Trim(); }
+            get { return txtBackupStoragePath.Text.Trim(); }
+        }
+        public int MaxStoredBackups
+        {
+            get { return (int)numMaxStoredBackups.Value; }
         }
         public List<string> Realmlists
         {
@@ -42,9 +46,10 @@ namespace Vanilla_WoW_Toppings
         {
             btnOK.DialogResult = DialogResult.OK;
 
-            txtWowFolder.Text = Settings.WowGameDirectoryPath;
-            txtAddonsFolder.Text = Settings.AddonLibraryDirectoryPath;
-            txtBackupFolder.Text = Settings.BackupDirectoryPath;
+            txtGameDataPath.Text = Settings.GameDataPath;
+            txtAddonLibraryPath.Text = Settings.AddonLibraryPath;
+            txtBackupStoragePath.Text = Settings.BackupStoragePath;
+            numMaxStoredBackups.Value = Settings.MaxStoredBackups;
 
             realmlists = new List<string>();
             for (var i = 0; i < Settings.Realmlists.Count; i++)
@@ -61,11 +66,11 @@ namespace Vanilla_WoW_Toppings
             var folderBrowser = new FolderBrowserDialog();
 
             folderBrowser.Description = "Choose your installed WoW game directory.";
-            folderBrowser.SelectedPath = txtWowFolder.Text;
+            folderBrowser.SelectedPath = txtGameDataPath.Text;
 
             if (folderBrowser.ShowDialog() == DialogResult.OK)
             {
-                txtWowFolder.Text = folderBrowser.SelectedPath;
+                txtGameDataPath.Text = folderBrowser.SelectedPath;
             }
         }
 
@@ -74,11 +79,11 @@ namespace Vanilla_WoW_Toppings
             var folderBrowser = new FolderBrowserDialog();
 
             folderBrowser.Description = "Choose your AddOn library directory.";
-            folderBrowser.SelectedPath = txtAddonsFolder.Text;
+            folderBrowser.SelectedPath = txtAddonLibraryPath.Text;
 
             if (folderBrowser.ShowDialog() == DialogResult.OK)
             {
-                txtAddonsFolder.Text = folderBrowser.SelectedPath;
+                txtAddonLibraryPath.Text = folderBrowser.SelectedPath;
             }
         }
 
@@ -87,11 +92,11 @@ namespace Vanilla_WoW_Toppings
             var folderBrowser = new FolderBrowserDialog();
 
             folderBrowser.Description = "Choose a backup directory.";
-            folderBrowser.SelectedPath = txtBackupFolder.Text;
+            folderBrowser.SelectedPath = txtBackupStoragePath.Text;
 
             if (folderBrowser.ShowDialog() == DialogResult.OK)
             {
-                txtBackupFolder.Text = folderBrowser.SelectedPath;
+                txtBackupStoragePath.Text = folderBrowser.SelectedPath;
             }
         }
 
