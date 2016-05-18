@@ -18,3 +18,6 @@ C:\Users\Martin\Filer\Programmering\C#\Vanilla WoW Toppings\Vanilla WoW Toppings
 C:\Users\Martin\Filer\Programmering\C#\Vanilla WoW Toppings\Vanilla WoW Toppings\obj\Debug\Vanilla_WoW_Toppings.frmPreferences.resources
 C:\Users\Martin\Filer\Programmering\C#\Vanilla WoW Toppings\Vanilla WoW Toppings\obj\Debug\Vanilla_WoW_Toppings.Properties.Resources.resources
 C:\Users\Martin\Filer\Programmering\C#\Vanilla WoW Toppings\Vanilla WoW Toppings\obj\Debug\Vanilla WoW Toppings.csproj.GenerateResource.Cache
+C:\Users\Martin\Filer\Programmering\GitHub\Vanilla WoW Toppings\Vanilla WoW Toppings\bin\Debug\Vanilla WoW Toppings.exe.config
+C:\Users\Martin\Filer\Programmering\GitHub\Vanilla WoW Toppings\Vanilla WoW Toppings\obj\Debug\Vanilla WoW Toppings.exe
+C:\Users\Martin\Filer\Programmering\GitHub\Vanilla WoW Toppings\Vanilla WoW Toppings\obj\Debug\Vanilla WoW Toppings.pdb
