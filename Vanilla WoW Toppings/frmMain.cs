@@ -97,26 +97,29 @@ namespace Vanilla_WoW_Toppings
 
         void LoadBackups()
         {
-            var backupStorageDirectory = new DirectoryInfo(
-                Settings.BackupStoragePath);
-
-            try
+            if (Directory.Exists(Settings.BackupStoragePath))
             {
-                foreach (var directory in backupStorageDirectory.
-                    GetDirectories())
+                var backupStorageDirectory = new DirectoryInfo(
+                    Settings.BackupStoragePath);
+
+                try
                 {
-                    var menuItem = new ToolStripMenuItem(
-                        directory.Name);
-                    menuItem.Click += new EventHandler(RestoreBackup);
+                    foreach (var directory in backupStorageDirectory.
+                        GetDirectories())
+                    {
+                        var menuItem = new ToolStripMenuItem(
+                            directory.Name);
+                        menuItem.Click += new EventHandler(RestoreBackup);
 
-                    miRestoreBackup.DropDownItems.Add(menuItem);
+                        miRestoreBackup.DropDownItems.Add(menuItem);
+                    }
                 }
-            }
-            catch { }
+                catch { }
 
-            if (miRestoreBackup.DropDownItems.Count == 0)
-            {
-                miRestoreBackup.Enabled = false;
+                if (miRestoreBackup.DropDownItems.Count == 0)
+                {
+                    miRestoreBackup.Enabled = false;
+                }
             }
         }
 
