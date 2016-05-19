@@ -19,6 +19,7 @@ namespace Vanilla_WoW_Toppings
             UpdateControlAvailability();
             LoadInstalledAddons();
             LoadAddonLibrary();
+            LoadBackups();
         }
 
         void LoadAddons(ComboBox comboBox, string groupBoxText,
@@ -94,6 +95,102 @@ namespace Vanilla_WoW_Toppings
                 addonLibraryDirectoryPath);
         }
 
+        void LoadBackups()
+        {
+            var backupStorageDirectory = new DirectoryInfo(
+                Settings.BackupStoragePath);
+
+            try
+            {
+                foreach (var directory in backupStorageDirectory.
+                    GetDirectories())
+                {
+                    var menuItem = new ToolStripMenuItem(
+                        directory.Name);
+                    menuItem.Click += new EventHandler(RestoreBackup);
+
+                    miRestoreBackup.DropDownItems.Add(menuItem);
+                }
+            }
+            catch { }
+
+            if (miRestoreBackup.DropDownItems.Count == 0)
+            {
+                miRestoreBackup.Enabled = false;
+            }
+        }
+
+        void CopyDirectory(string fromPath, string toPath)
+        {
+            var directory = new DirectoryInfo(fromPath);
+
+            foreach (var file in directory.GetFiles())
+            {
+                try
+                {
+                    file.CopyTo(Path.Combine(toPath, file.Name), true);
+                }
+                catch { }
+            }
+
+            foreach (var subDirectory in directory.GetDirectories())
+            {
+                if (!subDirectory.Exists)
+                {
+                    subDirectory.Create();
+                }
+
+                CopyDirectory(subDirectory.FullName,
+                    Path.Combine(toPath, subDirectory.Name));
+            }
+        }
+
+        void RestoreBackup(object sender, EventArgs e)
+        {
+            var backupPath = Path.Combine(
+                Settings.BackupStoragePath,
+                ((ToolStripMenuItem)sender).Text);
+
+            try
+            {
+                lblAction.Text = "Restoring backup...";
+
+                var backupAddonDirectory = new DirectoryInfo(Path.Combine(
+                    backupPath, "AddOns"));
+                var backupWtfDirectory = new DirectoryInfo(Path.Combine(
+                    backupPath, "WTF"));
+                var wowAddonDirectory = new DirectoryInfo(Path.Combine(
+                    Settings.GameDataPath, Settings.GameDataAddonPath));
+                var wowWtfDirectory = new DirectoryInfo(Path.Combine(
+                    Settings.GameDataPath, "WTF"));
+
+                // Copy to WoW addon directory.
+                CopyFiles(
+                    backupAddonDirectory.FullName,
+                    wowAddonDirectory.FullName,
+                    true);
+
+                // Copy to WoW WTF directory.
+                CopyFiles(
+                    backupWtfDirectory.FullName,
+                    wowWtfDirectory.FullName,
+                    true);
+
+                lblAction.Text = "Backup restored at " + DateTime.Now;
+            }
+            catch (Exception exception)
+            {
+                lblAction.Text = "Backup restoration failed";
+
+                MessageBox.Show(
+                    "Unable to restore the backup.\r\n\r\n" +
+                        "Error message:\r\n" + exception.Message,
+                    Settings.ApplicationTitle,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
         void UpdateControlAvailability()
         {
             // Set the availability of the WoW game data directory.
@@ -167,7 +264,7 @@ namespace Vanilla_WoW_Toppings
             return string.Empty;
         }
 
-        async void PerformAddonsAndSettingsBackup()
+        async void PerformBackup()
         {
             // Check if the backup directory exists.
             var isBackupDirectoryAvailable =
@@ -177,12 +274,17 @@ namespace Vanilla_WoW_Toppings
             {
                 try
                 {
+                    lblAction.Text = "Performing backup...";
+                    miPerformBackup.Enabled = false;
+                    miRestoreBackup.Enabled = false;
+
                     await Task.Run(() =>
                     {
                         // Get the current date and time
                         // and remove special characters.
                         var currentDate = DateTime.Now.Date.ToShortDateString();
                         currentDate = currentDate.Replace("-", string.Empty);
+
                         var currentTime = DateTime.Now.ToLongTimeString();
                         currentTime = currentTime.Replace(":", string.Empty);
 
@@ -218,7 +320,7 @@ namespace Vanilla_WoW_Toppings
                         newAddonDirectory.Create();
 
                         // Set the new WTF directory.
-                        DirectoryInfo newWtfDir = new DirectoryInfo(Path.Combine(
+                        var newWtfDir = new DirectoryInfo(Path.Combine(
                             newBackupDirectory.FullName,
                             "WTF"));
 
@@ -233,17 +335,17 @@ namespace Vanilla_WoW_Toppings
                         CopyFiles(
                             wowWtfDirectory.FullName,
                             newWtfDir.FullName);
-
-                        // Display a "success" message.
-                        MessageBox.Show(
-                            "The AddOns and settings backup was successful.",
-                            Settings.ApplicationTitle,
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
                     });
+
+                    // Display a "success" message.
+                    lblAction.Text = "Backup completed at " + DateTime.Now;
+                    miPerformBackup.Enabled = true;
+                    miRestoreBackup.Enabled = true;
                 }
                 catch (Exception exception)
                 {
+                    lblAction.Text = "Backup failed";
+
                     MessageBox.Show(
                         "The backup was unsuccessful. Please try again.\r\n\r\n" +
                             "Error message:\r\n" + exception.Message,
@@ -254,11 +356,22 @@ namespace Vanilla_WoW_Toppings
             }
         }
 
-        void CopyFiles(string sourceDirectoryPath, string targetDirectoryPath)
+        void CopyFiles(string fromPath, string toPath,
+            bool deleteBeforeCopying = false)
         {
             // Set source and target directories.
-            var sourceDirectory = new DirectoryInfo(sourceDirectoryPath);
-            var targetDirectory = new DirectoryInfo(targetDirectoryPath);
+            var sourceDirectory = new DirectoryInfo(fromPath);
+            var targetDirectory = new DirectoryInfo(toPath);
+
+            // Delete the directory, if commanded to do so.
+            if (deleteBeforeCopying)
+            {
+                try
+                {
+                    targetDirectory.Delete(true);
+                }
+                catch { }
+            }
 
             // Create the target directory if it doesn't exist.
             if (!targetDirectory.Exists)
@@ -436,8 +549,6 @@ namespace Vanilla_WoW_Toppings
         {
             Settings.LoadSettings();
             InitializeApplication();
-
-            miRestoreBackup.Visible = false;
         }
 
         private void cbInstalledAddons_DrawItem(object sender, DrawItemEventArgs e)
@@ -571,7 +682,7 @@ namespace Vanilla_WoW_Toppings
         #region Menu
         private void miPerformBackup_Click(object sender, EventArgs e)
         {
-            PerformAddonsAndSettingsBackup();
+            PerformBackup();
         }
 
         private void miExit_Click(object sender, EventArgs e)

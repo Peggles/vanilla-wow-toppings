@@ -32,6 +32,7 @@
             this.menu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miPerformBackup = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRestoreBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.directoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +48,7 @@
             this.grbAddonLibrary = new System.Windows.Forms.GroupBox();
             this.btnInstallAddon = new System.Windows.Forms.Button();
             this.cbLibraryAddons = new System.Windows.Forms.ComboBox();
-            this.miRestoreBackup = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblAction = new System.Windows.Forms.Label();
             this.menu.SuspendLayout();
             this.grbInstalledAddons.SuspendLayout();
             this.grbAddonLibrary.SuspendLayout();
@@ -64,7 +65,7 @@
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(657, 24);
             this.menu.TabIndex = 1;
-            this.menu.Text = "menuStrip1";
+            this.menu.Text = "Menu";
             // 
             // fileToolStripMenuItem
             // 
@@ -83,6 +84,12 @@
             this.miPerformBackup.Size = new System.Drawing.Size(159, 22);
             this.miPerformBackup.Text = "Perform backup";
             this.miPerformBackup.Click += new System.EventHandler(this.miPerformBackup_Click);
+            // 
+            // miRestoreBackup
+            // 
+            this.miRestoreBackup.Name = "miRestoreBackup";
+            this.miRestoreBackup.Size = new System.Drawing.Size(159, 22);
+            this.miRestoreBackup.Text = "Restore backup";
             // 
             // toolStripSeparator1
             // 
@@ -138,7 +145,7 @@
             // miPreferences
             // 
             this.miPreferences.Name = "miPreferences";
-            this.miPreferences.Size = new System.Drawing.Size(152, 22);
+            this.miPreferences.Size = new System.Drawing.Size(144, 22);
             this.miPreferences.Text = "Preferences...";
             this.miPreferences.Click += new System.EventHandler(this.miPreferences_Click);
             // 
@@ -221,17 +228,21 @@
             this.cbLibraryAddons.TabIndex = 0;
             this.cbLibraryAddons.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbLibraryAddons_DrawItem);
             // 
-            // miRestoreBackup
+            // lblAction
             // 
-            this.miRestoreBackup.Name = "miRestoreBackup";
-            this.miRestoreBackup.Size = new System.Drawing.Size(159, 22);
-            this.miRestoreBackup.Text = "Restore backup";
+            this.lblAction.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblAction.Location = new System.Drawing.Point(12, 360);
+            this.lblAction.Name = "lblAction";
+            this.lblAction.Size = new System.Drawing.Size(633, 19);
+            this.lblAction.TabIndex = 2;
+            this.lblAction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 358);
+            this.ClientSize = new System.Drawing.Size(657, 390);
+            this.Controls.Add(this.lblAction);
             this.Controls.Add(this.grbAddonLibrary);
             this.Controls.Add(this.grbInstalledAddons);
             this.Controls.Add(this.menu);
@@ -272,6 +283,7 @@
         private System.Windows.Forms.ToolStripMenuItem miOpenAddonLibraryDirectory;
         private System.Windows.Forms.ToolStripMenuItem miOpenBackupDirectory;
         private System.Windows.Forms.ToolStripMenuItem miRestoreBackup;
+        private System.Windows.Forms.Label lblAction;
     }
 }
 
