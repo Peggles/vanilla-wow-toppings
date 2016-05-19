@@ -25,7 +25,7 @@ namespace Vanilla_WoW_Toppings
 
         // Addon combobox item colors.
         public static readonly Color DefaultAddonItemColor = Color.Black;
-        public static readonly Color SelectedAddonItemColor =
+        public static readonly Color InstalledAddonItemColor =
             Color.FromArgb(25, 130, 25);
         // Addon combobox item offset.
         public const int AddonItemNotesOffsetX = 12;
@@ -35,7 +35,7 @@ namespace Vanilla_WoW_Toppings
         public static string GameDataPath = string.Empty;
         public static string AddonLibraryPath = string.Empty;
         public static string BackupStoragePath = string.Empty;
-
+        // Backup settings.
         public static int MaxStoredBackups = 5;
 
         // Realmlists
@@ -84,7 +84,6 @@ namespace Vanilla_WoW_Toppings
                     }
                     filetext.Append(
                         "\r\nCURRENT-REALMLIST=" + CurrentRealmlist);
-
 
                     // Write to the file then close it.
                     writer.Write(filetext.ToString());

@@ -116,22 +116,22 @@
             // miOpenGameDirectory
             // 
             this.miOpenGameDirectory.Name = "miOpenGameDirectory";
-            this.miOpenGameDirectory.Size = new System.Drawing.Size(166, 22);
+            this.miOpenGameDirectory.Size = new System.Drawing.Size(164, 22);
             this.miOpenGameDirectory.Text = "Game data...";
             this.miOpenGameDirectory.Click += new System.EventHandler(this.miOpenGameDirectory_Click);
             // 
             // miOpenAddonLibraryDirectory
             // 
             this.miOpenAddonLibraryDirectory.Name = "miOpenAddonLibraryDirectory";
-            this.miOpenAddonLibraryDirectory.Size = new System.Drawing.Size(166, 22);
+            this.miOpenAddonLibraryDirectory.Size = new System.Drawing.Size(164, 22);
             this.miOpenAddonLibraryDirectory.Text = "AddOn library...";
             this.miOpenAddonLibraryDirectory.Click += new System.EventHandler(this.miOpenAddonLibraryDirectory_Click);
             // 
             // miOpenBackupDirectory
             // 
             this.miOpenBackupDirectory.Name = "miOpenBackupDirectory";
-            this.miOpenBackupDirectory.Size = new System.Drawing.Size(166, 22);
-            this.miOpenBackupDirectory.Text = "Backup-storage...";
+            this.miOpenBackupDirectory.Size = new System.Drawing.Size(164, 22);
+            this.miOpenBackupDirectory.Text = "Backup storage...";
             this.miOpenBackupDirectory.Click += new System.EventHandler(this.miOpenBackupDirectory_Click);
             // 
             // settingsToolStripMenuItem
