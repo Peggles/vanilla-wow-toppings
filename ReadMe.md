@@ -5,6 +5,7 @@ Vanilla WoW Toppings is an application that gives the user an easy way of instal
 
 The application also includes a simple way of backing up currently installed AddOns and game settings so the user can restore them at a later time.
 
-Download: https://github.com/Peggles/vanilla-wow-toppings/releases/download/pre/vanilla_wow_toppings.zip
+Download application: https://github.com/Peggles/vanilla-wow-toppings/releases/download/pre/vanilla_wow_toppings.zip
+Requires .NET Framework 4.5.2: https://www.microsoft.com/en-us/download/details.aspx?id=42643
 
 <img src="http://www.deprivedgames.com/images/vanilla_wow_toppings.png">
