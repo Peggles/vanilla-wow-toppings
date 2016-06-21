@@ -140,6 +140,8 @@ namespace Vanilla_WoW_Toppings
                         {
                             Realmlists.Add(realmlists[i]);
                         }
+
+                        // Load the currently chosen realmlist.
                         CurrentRealmlist = reader.ReadLine().
                             Split(splitChar)[1];
 
