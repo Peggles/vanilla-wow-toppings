@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,6 +22,37 @@ namespace Vanilla_WoW_Toppings
             LoadInstalledAddons();
             LoadAddonLibrary();
             LoadBackups();
+
+            CheckServerAvailability(Settings.CurrentRealmlist);
+        }
+
+        void CheckServerAvailability(string url)
+        {
+            try
+            {
+                PingReply pingReply;
+                using (var ping = new Ping())
+                {
+                    pingReply = ping.Send(url);
+                }
+
+                var availabe = pingReply.Status == IPStatus.Success;
+
+                if (availabe)
+                {
+                    lblServerStatus.ForeColor = Color.LimeGreen;
+                    lblServerStatus.Text = url + " is online";
+                }
+                else
+                {
+                    lblServerStatus.ForeColor = Color.Red;
+                    lblServerStatus.Text = url + " is offline";
+                }
+            }
+            catch
+            {
+                // No catch.
+            }
         }
 
         void LoadAddons(ComboBox comboBox, string groupBoxText,
@@ -771,6 +803,8 @@ namespace Vanilla_WoW_Toppings
                 InitializeApplication();
 
                 lblAction.Text = "Updated settings";
+
+                CheckServerAvailability(Settings.CurrentRealmlist);
             }
         }
 

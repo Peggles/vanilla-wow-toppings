@@ -21,3 +21,10 @@ C:\Users\Martin\Filer\Programmering\GitHub\Vanilla WoW Toppings\Vanilla WoW Topp
 C:\Users\Martin\Filer\Programmering\GitHub\Vanilla WoW Toppings\Vanilla WoW Toppings\obj\Release\Vanilla_WoW_Toppings.frmPreferences.resources
 C:\Users\Martin\Filer\Programmering\GitHub\Vanilla WoW Toppings\Vanilla WoW Toppings\obj\Release\Vanilla_WoW_Toppings.Properties.Resources.resources
 C:\Users\Martin\Filer\Programmering\GitHub\Vanilla WoW Toppings\Vanilla WoW Toppings\obj\Release\Vanilla WoW Toppings.csproj.GenerateResource.Cache
+C:\Users\Martin\Filer\Programmering\C#\Vanilla WoW Toppings\Vanilla WoW Toppings\bin\Release\Vanilla WoW Toppings.exe
+C:\Users\Martin\Filer\Programmering\C#\Vanilla WoW Toppings\Vanilla WoW Toppings\bin\Release\Vanilla WoW Toppings.pdb
+C:\Users\Martin\Filer\Programmering\C#\Vanilla WoW Toppings\Vanilla WoW Toppings\obj\Release\Vanilla WoW Toppings.csprojResolveAssemblyReference.cache
+C:\Users\Martin\Filer\Programmering\C#\Vanilla WoW Toppings\Vanilla WoW Toppings\obj\Release\Vanilla_WoW_Toppings.frmMain.resources
+C:\Users\Martin\Filer\Programmering\C#\Vanilla WoW Toppings\Vanilla WoW Toppings\obj\Release\Vanilla_WoW_Toppings.frmPreferences.resources
+C:\Users\Martin\Filer\Programmering\C#\Vanilla WoW Toppings\Vanilla WoW Toppings\obj\Release\Vanilla_WoW_Toppings.Properties.Resources.resources
+C:\Users\Martin\Filer\Programmering\C#\Vanilla WoW Toppings\Vanilla WoW Toppings\obj\Release\Vanilla WoW Toppings.csproj.GenerateResource.Cache
