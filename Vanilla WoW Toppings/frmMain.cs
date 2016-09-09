@@ -22,37 +22,6 @@ namespace Vanilla_WoW_Toppings
             LoadInstalledAddons();
             LoadAddonLibrary();
             LoadBackups();
-
-            CheckServerAvailability(Settings.CurrentRealmlist);
-        }
-
-        void CheckServerAvailability(string url)
-        {
-            try
-            {
-                PingReply pingReply;
-                using (var ping = new Ping())
-                {
-                    pingReply = ping.Send(url);
-                }
-
-                var availabe = pingReply.Status == IPStatus.Success;
-
-                if (availabe)
-                {
-                    lblServerStatus.ForeColor = Color.LimeGreen;
-                    lblServerStatus.Text = url + " is online";
-                }
-                else
-                {
-                    lblServerStatus.ForeColor = Color.Red;
-                    lblServerStatus.Text = url + " is offline";
-                }
-            }
-            catch
-            {
-                // No catch.
-            }
         }
 
         void LoadAddons(ComboBox comboBox, string groupBoxText,
@@ -61,7 +30,8 @@ namespace Vanilla_WoW_Toppings
             // Clear the addons in the combobox.
             comboBox.Items.Clear();
 
-            if (Directory.Exists(Settings.GameDataPath))
+            if (Directory.Exists(Settings.GameDataPath) &&
+                Directory.Exists(addonCollectionDirectoryPath))
             {
                 // Get the addon directory info from the directory path.
                 var addonCollectionDirectory = new DirectoryInfo(
@@ -803,31 +773,36 @@ namespace Vanilla_WoW_Toppings
                 InitializeApplication();
 
                 lblAction.Text = "Updated settings";
-
-                CheckServerAvailability(Settings.CurrentRealmlist);
             }
         }
 
         private void miLaunchWow_Click(object sender, EventArgs e)
         {
             // Launch WoW.exe then close this application.
-            try
-            {
-                Process.Start(Path.Combine(
-                    Settings.GameDataPath,
-                    Settings.WowFilename));
+            var wowPath = Path.Combine(
+                Settings.GameDataPath,
+                Settings.WowFilename);
 
-                Application.Exit();
-            }
-            catch (FileNotFoundException exception)
+            if (File.Exists(wowPath))
             {
-                MessageBox.Show(
-                    "Unable to launch '" + Settings.WowFilename + "'. Check " +
-                        "your game folder in Settings -> Preferences.\r\n\r\n" +
-                        "Error message:\r\n" + exception.Message,
-                    Settings.ApplicationTitle,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                try
+                {
+                    Process.Start(Path.Combine(
+                        Settings.GameDataPath,
+                        Settings.WowFilename));
+
+                    Application.Exit();
+                }
+                catch (FileNotFoundException exception)
+                {
+                    MessageBox.Show(
+                        "Unable to launch '" + Settings.WowFilename + "'. Check " +
+                            "your game folder in Settings -> Preferences.\r\n\r\n" +
+                            "Error message:\r\n" + exception.Message,
+                        Settings.ApplicationTitle,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
         }
 

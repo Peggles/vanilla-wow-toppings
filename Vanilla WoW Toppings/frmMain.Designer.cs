@@ -49,7 +49,6 @@
             this.btnInstallAddon = new System.Windows.Forms.Button();
             this.cbLibraryAddons = new System.Windows.Forms.ComboBox();
             this.lblAction = new System.Windows.Forms.Label();
-            this.lblServerStatus = new System.Windows.Forms.Label();
             this.menu.SuspendLayout();
             this.grbInstalledAddons.SuspendLayout();
             this.grbAddonLibrary.SuspendLayout();
@@ -238,22 +237,11 @@
             this.lblAction.TabIndex = 2;
             this.lblAction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblServerStatus
-            // 
-            this.lblServerStatus.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblServerStatus.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblServerStatus.Location = new System.Drawing.Point(385, 360);
-            this.lblServerStatus.Name = "lblServerStatus";
-            this.lblServerStatus.Size = new System.Drawing.Size(260, 19);
-            this.lblServerStatus.TabIndex = 3;
-            this.lblServerStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(657, 390);
-            this.Controls.Add(this.lblServerStatus);
             this.Controls.Add(this.lblAction);
             this.Controls.Add(this.grbAddonLibrary);
             this.Controls.Add(this.grbInstalledAddons);
@@ -296,7 +284,6 @@
         private System.Windows.Forms.ToolStripMenuItem miOpenBackupDirectory;
         private System.Windows.Forms.ToolStripMenuItem miRestoreBackup;
         private System.Windows.Forms.Label lblAction;
-        private System.Windows.Forms.Label lblServerStatus;
     }
 }
 
