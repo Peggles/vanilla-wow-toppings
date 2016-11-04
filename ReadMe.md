@@ -9,4 +9,4 @@ Download link: https://github.com/Peggles/vanilla-wow-toppings/releases/download
 
 Requires .NET Framework 4.5.2: https://www.microsoft.com/en-us/download/details.aspx?id=42643
 
-<img src="http://www.deprivedgames.com/images/vanilla_wow_toppings/vanilla-wow-toppings-screenshot.png">
+<img src="http://www.deprivedgames.com/images/vanilla-wow-toppings/vanilla-wow-toppings-screenshot.png">
